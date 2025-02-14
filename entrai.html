@@ -30,6 +30,32 @@
         <input type="radio" id="turma" name="turma" value="geral" required>
         <label for="turma">Geral</label>
         <br>
+        <h2 id="headerClasse">Classe:</h2>
+        <input type="radio" id="classe0" name="classe" value="ing" required>
+        <label for="classe0" id="labelClasse0">Inglês</label>
+        <input type="radio" id="classe1" name="classe" value="ge" required>
+        <label for="classe1" id="labelClasse1">GE</label>
+        <script>
+            document.getElementById("turma").addEventListener("click", function() {
+                document.getElementById("classe0").hidden = true;
+                document.getElementById("labelClasse0").hidden = true;
+                document.getElementById("classe1").hidden = true;
+                document.getElementById("labelClasse1").hidden = true;
+                document.getElementById("headerClasse").hidden = true;
+            });
+        
+            document.querySelectorAll('input[name="turma"]').forEach((elem) => {
+                elem.addEventListener("click", function() {
+                    if (this.value !== "geral") {
+                        document.getElementById("classe0").hidden = false;
+                        document.getElementById("labelClasse0").hidden = false;
+                        document.getElementById("classe1").hidden = false;
+                        document.getElementById("labelClasse1").hidden = false;
+                        document.getElementById("headerClasse").hidden = false;
+                    }
+                });
+            });
+        </script>
         <h2 id="alunosTurma">Alunos na turma:</h2>
         <input type="number" id="alunos" name="alunos" required>
         <h2>Quantidade de faltas:</h2>
